@@ -9,9 +9,15 @@ fn main() {
         .unwrap();
 
     events_loop.run_forever(|event| {
-        println!("{:?}", event);
-
         match event {
+            // winit::Event::WindowEvent { event: winit::WindowEvent::Resized(x, y), .. } => {
+            //     println!("resized: {},{}", x, y);
+            //     winit::ControlFlow::Continue
+            // }
+            // winit::Event::WindowEvent { event: winit::WindowEvent::MouseInput { state, .. }, .. } => {
+            //     println!("mouse input: {:?}", state);
+            //     winit::ControlFlow::Continue
+            // }
             winit::Event::WindowEvent { event: winit::WindowEvent::Closed, .. } => {
                 winit::ControlFlow::Break
             },

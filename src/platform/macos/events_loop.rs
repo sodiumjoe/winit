@@ -78,6 +78,7 @@ impl Shared {
     // This is necessary for the case when `WindowDelegate` callbacks are triggered during a call
     // to the user's callback.
     pub fn call_user_callback_with_event_or_store_in_pending(&self, event: Event) {
+        println!("{:?}", event);
         if self.user_callback.mutex.lock().unwrap().is_some() {
             unsafe {
                 self.user_callback.call_with_event(event);
@@ -254,6 +255,7 @@ impl EventsLoop {
                 let _: () = msg_send![pool, release];
 
                 if let Some(event) = maybe_event {
+                    println!("{:?}", event);
                     self.shared.user_callback.call_with_event(event);
                     if let ControlFlow::Break = control_flow.get() {
                         break;

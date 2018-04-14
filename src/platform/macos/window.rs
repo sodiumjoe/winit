@@ -83,6 +83,7 @@ impl WindowDelegate {
         }
 
         extern fn window_did_resize(this: &Object, _: Sel, _: id) {
+            println!("resizing");
             unsafe {
                 let state: *mut c_void = *this.get_ivar("winitState");
                 let state = &mut *(state as *mut DelegateState);
